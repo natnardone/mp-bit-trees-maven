@@ -1,15 +1,51 @@
 package edu.grinnell.csc207.util;
 
-/**
- * Interface for nodes of a bit tree.
- */
-public interface BitTreeNode {
-  
-  public void setZero(BitTreeNode node);
-  public void setOne(BitTreeNode node);
-  public void setValue(String value);
-  public BitTreeNode getZero();
-  public BitTreeNode getOne();
-  public String getValue();
+public class BitTreeNode {
 
-} // interface BitTreeNode
+  // Fields
+  BitTreeNode zeroSubTree;
+  BitTreeNode oneSubTree;
+  String value;
+
+  // Constructors
+
+  public BitTreeNode() {
+    zeroSubTree = null;
+    oneSubTree = null;
+    this.value = null;
+  } // BitTreeInteriorNode
+
+  public BitTreeNode(String val) {
+    this.value = val;
+    this.zeroSubTree = null;
+    this.oneSubTree = null;
+  } // BitTreeLeaf(String)
+
+  // Methods
+
+  public BitTreeNode getZero() {
+    return this.zeroSubTree;
+  }
+
+  public BitTreeNode getOne() {
+    return this.oneSubTree;
+  }
+
+
+  public void setZero(BitTreeNode n) {
+    this.zeroSubTree = n;
+  }
+
+  public void setOne(BitTreeNode n) {
+    this.oneSubTree = n;
+  }
+
+  public String getValue() {
+    return this.value;
+  } // getValue
+
+  public void setValue(String value) {
+    this.value = value;
+  }
+  
+}

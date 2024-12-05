@@ -39,7 +39,7 @@ public class BitTree {
    *   The size of the tree.
    */
   public BitTree(int n) {
-    this.root = new BitTreeInteriorNode();
+    this.root = new BitTreeNode();
     this.size = n;
   } // BitTree(int)
 
@@ -73,12 +73,12 @@ public class BitTree {
       curChar = bits.charAt(i);
       if (curChar == '0') {
         if (curNode.getZero() == null) {
-          curNode.setZero(new BitTreeInteriorNode());
+          curNode.setZero(new BitTreeNode());
         } // if
         curNode = curNode.getZero();
       } else if (curChar == '1') {
         if (curNode.getOne() == null) {
-          curNode.setOne(new BitTreeInteriorNode());
+          curNode.setOne(new BitTreeNode());
         } // if
         curNode = curNode.getOne();
       } else {
@@ -89,13 +89,13 @@ public class BitTree {
     // Sets/creates the leaf in the appropriate subtree
     if (bits.charAt(len-1) == '0') {
       if (curNode.getZero() == null) {
-        curNode.setZero(new BitTreeLeaf(value));
+        curNode.setZero(new BitTreeNode(value));
       } else {
         curNode.getZero().setValue(value);
       } // if/else
     } else if (bits.charAt(len-1) == '1') {
       if (curNode.getOne() == null) {
-        curNode.setOne(new BitTreeLeaf(value));
+        curNode.setOne(new BitTreeNode(value));
       } else {
         curNode.getOne().setValue(value);
       } // if/else
@@ -139,7 +139,11 @@ public class BitTree {
     } // for
 
     // At end of path, returns value of node
-    return curNode.getValue();
+    if (curNode.getValue() == null) {
+      throw new IndexOutOfBoundsException();
+    } else {
+      return curNode.getValue();
+    }
   } // get(String, String)
 
   /**
@@ -162,11 +166,10 @@ public class BitTree {
    */
   public void dumpHelper(PrintWriter pen, BitTreeNode current, String path) {
     // If we are at a leaf, add value to path and print
-    if (current.getValue() != null) {
+    if ((current != null) && (current.getValue() != null)) {
       path.concat("," + current.getValue());
       pen.println(path);
-      pen.println("\n");
-    } else {
+    } else if (current!=null){
       // Otherwise, recurse on both subtrees, updating value of path
       this.dumpHelper(pen, current.getZero(), path.concat("0"));
       this.dumpHelper(pen, current.getOne(), path.concat("1"));
