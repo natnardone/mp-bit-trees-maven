@@ -1,5 +1,9 @@
 package edu.grinnell.csc207.util;
 
+/**
+ * Nodes to be used in a BitTree.
+ * @author Natalie Nardone
+ */
 public class BitTreeNode {
 
   // Fields
@@ -93,5 +97,5 @@ public class BitTreeNode {
   public void setValue(String value) {
     this.value = value;
   } // setValue(String)
-  
+
 } // class BitTreeNode

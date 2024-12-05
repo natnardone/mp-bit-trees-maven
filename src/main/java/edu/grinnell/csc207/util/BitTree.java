@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Trees intended to be used in storing mappings between fixed-length 
+ * Trees intended to be used in storing mappings between fixed-length
  * sequences of bits and corresponding values.
  *
- * @author Your Name Here
+ * @author Natalie Nardone
  */
 public class BitTree {
   // +--------+------------------------------------------------------
@@ -69,7 +69,7 @@ public class BitTree {
     char curChar;
 
     // Loops through the path until the last character, updating the current node
-    for (int i = 0; i < len-1; i++) {
+    for (int i = 0; i < len - 1; i++) {
       curChar = bits.charAt(i);
       if (curChar == '0') {
         if (curNode.getZero() == null) {
@@ -87,13 +87,13 @@ public class BitTree {
     } // for
 
     // Sets/creates the leaf in the appropriate subtree
-    if (bits.charAt(len-1) == '0') {
+    if (bits.charAt(len - 1) == '0') {
       if (curNode.getZero() == null) {
         curNode.setZero(new BitTreeNode(value));
       } else {
         curNode.getZero().setValue(value);
       } // if/else
-    } else if (bits.charAt(len-1) == '1') {
+    } else if (bits.charAt(len - 1) == '1') {
       if (curNode.getOne() == null) {
         curNode.setOne(new BitTreeNode(value));
       } else {
@@ -108,7 +108,7 @@ public class BitTree {
    * Gets the value at the end of the specified path.
    * @param bits
    *   The path to find the value of.
-   * @returns the value at the end of the path.
+   * @return the value at the end of the path.
    */
   public String get(String bits) {
     // Checks that bits is correct for this size of tree
@@ -143,7 +143,7 @@ public class BitTree {
       throw new IndexOutOfBoundsException();
     } else {
       return curNode.getValue();
-    }
+    } // if/else
   } // get(String, String)
 
   /**
@@ -154,7 +154,7 @@ public class BitTree {
   public void dump(PrintWriter pen) {
     this.dumpHelper(pen, root, "");
   } // dump(PrintWriter)
-  
+
   /**
    * Recursive helper function for printing all paths.
    * @param pen
@@ -169,7 +169,7 @@ public class BitTree {
     if ((current != null) && (current.getValue() != null)) {
       path.concat("," + current.getValue());
       pen.println(path);
-    } else if (current!=null){
+    } else if (current != null) {
       // Otherwise, recurse on both subtrees, updating value of path
       this.dumpHelper(pen, current.getZero(), path.concat("0"));
       this.dumpHelper(pen, current.getOne(), path.concat("1"));
@@ -186,7 +186,7 @@ public class BitTree {
     String current;
     try {
       // Loop through the input
-      while((current = eyes.readLine())!= null) {
+      while ((current = eyes.readLine()) != null) {
         // For each line, split into bits and value and add to tree
         String[] parts = current.split(",");
         this.set(parts[0], parts[1]);
