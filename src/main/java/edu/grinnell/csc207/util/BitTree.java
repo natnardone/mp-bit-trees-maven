@@ -113,9 +113,9 @@ public class BitTree {
   public String get(String bits) {
     // Checks that bits is correct for this size of tree
     int len = bits.length();
-    if (len != size) {
-      throw new IndexOutOfBoundsException();
-    } // if
+    //if (len != size) {
+    //  throw new IndexOutOfBoundsException();
+    //} // if
 
     BitTreeNode curNode = root;
     char curChar;
