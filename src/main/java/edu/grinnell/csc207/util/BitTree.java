@@ -17,8 +17,6 @@ public class BitTree {
   // | Fields |
   // +--------+
 
-  // root/starting node and size
-
   /**
    * The root node of the tree.
    */

@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.io.IOException;
 
 /**
+ * Tables for converting between Braille, ASCII, and Unicode characters.
  *
- *
- * @author Your Name Here
+ * @author Natalie Nardone
  * @author Samuel A. Rebelsky
  */
 public class BrailleAsciiTables {
@@ -18,7 +18,7 @@ public class BrailleAsciiTables {
   /**
    * Conversions from ASCII to braille.
    */
-  static final String a2b = 
+  static final String a2b =
       "01000001,100000\n"
       + "01000010,110000\n"
       + "01000011,100100\n"
@@ -179,17 +179,17 @@ public class BrailleAsciiTables {
   // +---------------+
 
   /**
-   *
+   * A bit tree for ASCII to Braille conversions.
    */
   static BitTree a2bTree = null;
 
   /**
-   *
+   * A bit tree for Braille to ASCII conversions.
    */
   static BitTree b2aTree = null;
 
   /**
-   *
+   * A bit tree for Braille to Unicode conversions.
    */
   static BitTree b2uTree = null;
 
@@ -202,7 +202,10 @@ public class BrailleAsciiTables {
   // +----------------+
 
   /**
-   *
+   * Converts the given letter to its Braille binary representation.
+   * @param letter
+   *   The letter to convert.
+   * @return a String of the Braille representation.
    */
   public static String toBraille(char letter) {
     if (null == a2bTree) {
@@ -217,14 +220,21 @@ public class BrailleAsciiTables {
     } // if
     String asciiBits = Integer.toBinaryString(letter);
     String adjustedBits = "0";
+    // if it's a space
+    if (asciiBits.length() == 6) {
+      asciiBits = adjustedBits.concat(asciiBits);
+    } // if
     if (asciiBits.length() == 7) {
       asciiBits = adjustedBits.concat(asciiBits);
-    }
+    } // if
     return a2bTree.get(asciiBits);
   } // toBraille(char)
 
   /**
-   *
+   * Converts the given Braille binary to the corresponding ASCII letter.
+   * @param bits
+   *   The Braille binary to convert.
+   * @return a String of the ASCII letter.
    */
   public static String toAscii(String bits) {
     // Make sure we've loaded the braille-to-ASCII tree.
@@ -242,7 +252,10 @@ public class BrailleAsciiTables {
   } // toAscii(String)
 
   /**
-   *
+   * Converts the given Braille binary to the corresponding Unicode symbol.
+   * @param bits
+   *   The Braille binary to convert.
+   * @return a String of the Unicode symbol.
    */
   public static String toUnicode(String bits) {
     if (null == b2uTree) {

@@ -5,8 +5,9 @@ package edu.grinnell.csc207.util;
  * @author Natalie Nardone
  */
 public class BitTreeNode {
-
-  // Fields
+  // +--------+------------------------------------------------------
+  // | Fields |
+  // +--------+
 
   /**
    * The subtree of the node associated with 0 (interior nodes only).
@@ -23,7 +24,9 @@ public class BitTreeNode {
    */
   String value;
 
-  // Constructors
+  // +--------------+------------------------------------------------
+  // | Constructors |
+  // +--------------+
 
   /**
    * Creates an interior node with null subtrees.
@@ -45,7 +48,9 @@ public class BitTreeNode {
     this.oneSubTree = null;
   } // BitTreeNode(String)
 
-  // Methods
+  // +---------+-----------------------------------------------------
+  // | Methods |
+  // +---------+
 
   /**
    * Gets the 0-associated subtree of the node.
