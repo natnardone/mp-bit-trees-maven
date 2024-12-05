@@ -117,8 +117,19 @@ public class BitTree {
    *
    */
   public void dump(PrintWriter pen) {
-    // STUB
+    this.dumpHelper(pen, root, "");
   } // dump(PrintWriter)
+  
+  public void dumpHelper(PrintWriter pen, BitTreeNode current, String path) {
+    if (current.getValue() != null) { // at leaf
+      path.concat("," + current.getValue());
+      pen.println(path);
+      pen.println("\n");
+    } else {
+      this.dumpHelper(pen, current.getZero(), path.concat("0"));
+      this.dumpHelper(pen, current.getOne(), path.concat("1"));
+    }
+  } // dumpHelper(PrintWriter, BitTreeNode, String)
 
   /**
    *
