@@ -9,13 +9,13 @@ A mini-project exploring bit trees (a form of binary tree) and their use in tran
 
 **Acknowledgements**
 
-*
-*
-*
+* The Java Documentation for BufferedReader <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/BufferedReader.html>
+* The Java Documentation for Character <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Character.html>
+* The Java Documentation for Integer <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html>
 
 **Instructions for use**
 
-_Please insert instructions here._
+The `BrailleASCII` class takes user input through the command line for translation between braille, ASCII, and Unicode. The `BrailleAsciiTables` class contains the main methods for translation of singular characters. The `BitTree` and `BitTreeNode` classes contain the basis for the bit trees used to store the translation tables in `BrailleAsciiTables`.
 
 ---
 
